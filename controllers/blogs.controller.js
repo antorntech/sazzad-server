@@ -52,15 +52,7 @@ module.exports.addBlogs = async (req, res) => {
     }
 
     // Create new Blogs
-    const newBlogs = new Blogs({
-      title: req.body.title,
-      description: req.body.description,
-      date: req.body.date,
-      tags: req.body.tags,
-      banner: req.body.banner,
-    });
-
-    await newBlogs.save();
+    const newBlogs = await Blogs.create(req.body);
 
     return res.status(201).json({
       status: "success",

@@ -23,14 +23,13 @@ module.exports.singleTaskList = async (req, res) => {
 
 module.exports.addTaskList = async (req, res) => {
   try {
-    const { label, value } = req.body;
+    if (req.file) {
+      Object.assign(req.body, {
+        icon: "/uploads/images/" + req.file.filename,
+      });
+    }
 
-    const newTaskList = new TaskList({
-      label: label,
-      value: value,
-    });
-
-    await newTaskList.save();
+    const newTaskList = await TaskList.create(req.body);
 
     res.status(200).json({
       message: "TaskList created successfully",
@@ -48,11 +47,14 @@ module.exports.updateTaskList = async (req, res) => {
   try {
     const { taskListId } = req.params;
 
-    const result = await TaskList.findByIdAndUpdate(taskListId, {
-      $set: {
-        label: req.body.label,
-        value: req.body.value,
-      },
+    if (req.file) {
+      Object.assign(req.body, {
+        icon: "/uploads/images/" + req.file.filename,
+      });
+    }
+
+    const result = await TaskList.findByIdAndUpdate(taskListId, req.body, {
+      new: true,
     });
 
     res.status(200).json(result);
@@ -68,7 +70,7 @@ module.exports.deleteTaskList = async (req, res) => {
     const deletTaskList = await TaskList.findByIdAndDelete(taskListId);
 
     if (!deletTaskList) {
-      return res.status(404).send("Head menu is not found");
+      return res.status(404).send("TaskList is not found");
     }
 
     const recentTaskList = await TaskList.find({});

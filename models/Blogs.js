@@ -1,18 +1,23 @@
 const mongoose = require("mongoose");
 
 const blogsSchema = new mongoose.Schema({
+  headTitle: {
+    type: String,
+  },
+  subHeadTitle: {
+    type: String,
+  },
   title: {
     type: String,
   },
   description: {
     type: String,
   },
-  date: {
+  author: {
     type: String,
   },
-  tags: {
-    type: [String],
-    default: [],
+  date: {
+    type: String,
   },
   banner: {
     type: String,

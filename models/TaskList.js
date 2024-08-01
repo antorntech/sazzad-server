@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const taskListSchema = new mongoose.Schema({
-  label: {
+  icon: {
     type: String,
     required: true,
   },
-  value: {
+  title: {
     type: Number,
     required: true,
   },
