@@ -22,6 +22,9 @@ const contactSchema = new mongoose.Schema({
   banner: {
     type: String,
   },
+  mapUrl: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("Contact", contactSchema, "Contact");
