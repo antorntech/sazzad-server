@@ -5,7 +5,16 @@ const heroContentSchema = new mongoose.Schema({
   title: {
     type: String,
   },
-  description: {
+  facebookLink: {
+    type: String,
+  },
+  linkedinLink: {
+    type: String,
+  },
+  whatsappNumber: {
+    type: String,
+  },
+  youtubeVideoLink: {
     type: String,
   },
   banner: {

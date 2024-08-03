@@ -6,7 +6,7 @@ const taskListSchema = new mongoose.Schema({
     required: true,
   },
   title: {
-    type: Number,
+    type: String,
     required: true,
   },
 });

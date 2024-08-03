@@ -31,11 +31,7 @@ module.exports.addHeroContent = async (req, res) => {
     }
 
     // Create new HeroContent
-    const newHeroContent = new HeroContent({
-      title: req.body.title,
-      description: req.body.description,
-      banner: req.body.banner,
-    });
+    const newHeroContent = new HeroContent(req.body);
 
     await newHeroContent.save();
 
