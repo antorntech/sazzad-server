@@ -4,7 +4,10 @@ const associationSchema = new mongoose.Schema({
   title: {
     type: String,
   },
-  subTitle: {
+  subtitle: {
+    type: String,
+  },
+  link: {
     type: String,
   },
   logo: {
