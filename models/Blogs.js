@@ -1,12 +1,6 @@
 const mongoose = require("mongoose");
 
 const blogsSchema = new mongoose.Schema({
-  headTitle: {
-    type: String,
-  },
-  subHeadTitle: {
-    type: String,
-  },
   title: {
     type: String,
   },
