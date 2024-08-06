@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
 const aboutSchema = new mongoose.Schema({
-  title: {
+  name: {
+    type: String,
+  },
+  designation: {
     type: String,
   },
   description: {
     type: String,
   },
   banner: {
-    type: String,
-  },
-  name: {
     type: String,
   },
   address: {
