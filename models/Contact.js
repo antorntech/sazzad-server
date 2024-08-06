@@ -1,25 +1,22 @@
 const mongoose = require("mongoose");
 
 const contactSchema = new mongoose.Schema({
-  firstname: {
-    type: String,
-  },
-  lastname: {
+  phone: {
     type: String,
   },
   email: {
     type: String,
   },
-  phone: {
+  address: {
     type: String,
   },
-  subject: {
+  facebookUrl: {
     type: String,
   },
-  message: {
+  instagramUrl: {
     type: String,
   },
-  banner: {
+  linkedinUrl: {
     type: String,
   },
   mapUrl: {

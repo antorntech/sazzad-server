@@ -31,17 +31,7 @@ module.exports.addContact = async (req, res) => {
     }
 
     // Create new Contact
-    const newContact = new Contact({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      email: req.body.email,
-      phone: req.body.phone,
-      subject: req.body.subject,
-      message: req.body.message,
-      banner: req.body.banner,
-    });
-
-    await newContact.save();
+    const newContact = await Contact.create(req.body);
 
     return res.status(201).json({
       status: "success",
