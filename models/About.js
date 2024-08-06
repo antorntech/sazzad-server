@@ -10,7 +10,13 @@ const aboutSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  banner: {
+  main_banner: {
+    type: String,
+  },
+  home_banner1: {
+    type: String,
+  },
+  home_banner2: {
     type: String,
   },
   address: {

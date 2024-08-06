@@ -24,24 +24,26 @@ module.exports.singleAbout = async (req, res) => {
 module.exports.addAbout = async (req, res) => {
   try {
     // Check if files were uploaded
-    if (req.file) {
+    if (req.files["main_banner"]) {
       Object.assign(req.body, {
-        banner: "/uploads/images/" + req.file.filename,
+        main_banner: `/uploads/images/${req.files["main_banner"][0].filename}`,
+      });
+    }
+
+    if (req.files["home_banner1"]) {
+      Object.assign(req.body, {
+        home_banner1: `/uploads/documents/${req.files["home_banner1"][0].filename}`,
+      });
+    }
+
+    if (req.files["home_banner2"]) {
+      Object.assign(req.body, {
+        home_banner2: `/uploads/documents/${req.files["home_banner2"][0].filename}`,
       });
     }
 
     // Create new About
-    const newAbout = new About({
-      title: req.body.title,
-      description: req.body.description,
-      banner: req.body.banner,
-      name: req.body.name,
-      address: req.body.address,
-      email: req.body.email,
-      phone: req.body.phone,
-    });
-
-    await newAbout.save();
+    const newAbout = await About.create(req.body);
 
     return res.status(201).json({
       status: "success",
@@ -58,9 +60,22 @@ module.exports.updateAbout = async (req, res) => {
   try {
     const { aboutId } = req.params;
 
-    if (req.file) {
+    // Check if files were uploaded
+    if (req.files["main_banner"]) {
       Object.assign(req.body, {
-        banner: "/uploads/images/" + req.file.filename,
+        main_banner: `/uploads/images/${req.files["main_banner"][0].filename}`,
+      });
+    }
+
+    if (req.files["home_banner1"]) {
+      Object.assign(req.body, {
+        home_banner1: `/uploads/documents/${req.files["home_banner1"][0].filename}`,
+      });
+    }
+
+    if (req.files["home_banner2"]) {
+      Object.assign(req.body, {
+        home_banner2: `/uploads/documents/${req.files["home_banner2"][0].filename}`,
       });
     }
 
